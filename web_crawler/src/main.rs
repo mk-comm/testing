@@ -8,6 +8,8 @@ use playwright::api::{Cookie, ProxySettings};
 #[tokio::main]
 async fn main() -> Result<(), playwright::Error> {
 
+
+    //proxy settings, TODO add variables instead of fixed values
     let proxy = ProxySettings {
         server: "88.218.148.37:6048".to_owned(),
         username: Some("opncbnxd".to_owned()),
@@ -21,24 +23,17 @@ async fn main() -> Result<(), playwright::Error> {
     let browser = chromium.launcher().proxy(proxy).headless(false).launch().await?;
 
    
-
+    //TODO add variable for the url
     let context = browser.context_builder().build().await?;
     let page = context.new_page().await?;
     page.goto_builder("https://google.com").goto().await?;
     
-    
-   
-    
     //it appears only if you visit the target url, otherwise cookie won't show
     let cookie = Cookie::with_url("li_at", "value", "https://.www.linkedin.com");
-   
+    context.add_cookies(&[cookie]).await?;
     
-    
-    context.add_cookies(&[cookie]).await?; // does not work 
-    
+    //headers, TODO add variable for User-Agent
     let mut headers = HashMap::new();
-    //headers.insert("cookie".to_string(), "li_at=123".to_string()); // should be deleted, useless
-    //headers.insert("cookie".to_string(), "JSESSIONID=typebit".to_string()); // should be deleted, useless
     headers.insert("User-Agent".to_string(), "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36".to_string());
     context.set_extra_http_headers(headers).await?;
 
@@ -46,7 +41,8 @@ async fn main() -> Result<(), playwright::Error> {
 
     thread::sleep(Duration::from_secs(300)); // add delay before closing the browser to check things
 
-    // Exec in browser and Deserialize with serde // What this code is doing? looks like it compares current page with example?
+    // What this code is doing? looks like it compares current page with example?
+    // Exec in browser and Deserialize with serde 
     let s: String = page.eval("() => location.href").await?;
     assert_eq!(s, "https://example.com/");
     page.click_builder("a").click().await?;
