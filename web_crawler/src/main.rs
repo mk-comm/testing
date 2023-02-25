@@ -1,8 +1,10 @@
 use playwright::Playwright;
+use std::fs::read_to_string;
 use std::thread;
 use std::time::Duration;
 use std::collections::HashMap;
 use playwright::api::Cookie;
+
 
 #[tokio::main]
 async fn main() -> Result<(), playwright::Error> {
@@ -12,17 +14,19 @@ async fn main() -> Result<(), playwright::Error> {
     let browser = chromium.launcher().headless(false).launch().await?;
     let context = browser.context_builder().build().await?;
     let page = context.new_page().await?;
-    page.goto_builder("https://google.com/").goto().await?;
-    
+    page.goto_builder("https://linkedin.com").goto().await?;
     
 
-    let cookie = Cookie::with_url("li_at", "123", "https://www.linkedin.com");
+    //it appears only if you visit the target url, otherwise cookie won't show
+    let cookie = Cookie::with_url("li_at", "value", "https://.www.linkedin.com");
+   
+    
     
     context.add_cookies(&[cookie]).await?; // does not work 
     
     let mut headers = HashMap::new();
-    headers.insert("cookie".to_string(), "li_at=123".to_string());
-    headers.insert("cookie".to_string(), "JSESSIONID=typebit".to_string()); // adds only last cookie, not both
+    //headers.insert("cookie".to_string(), "li_at=123".to_string()); // should be deleted, useless
+    //headers.insert("cookie".to_string(), "JSESSIONID=typebit".to_string()); // should be deleted, useless
     headers.insert("User-Agent".to_string(), "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36".to_string());
     context.set_extra_http_headers(headers).await?;
 
