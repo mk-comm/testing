@@ -1,22 +1,34 @@
 use playwright::Playwright;
-use std::fs::read_to_string;
 use std::thread;
 use std::time::Duration;
 use std::collections::HashMap;
-use playwright::api::Cookie;
+use playwright::api::{Cookie, ProxySettings};
 
 
 #[tokio::main]
 async fn main() -> Result<(), playwright::Error> {
+
+    let proxy = ProxySettings {
+        server: "88.218.148.37:6048".to_owned(),
+        username: Some("opncbnxd".to_owned()),
+        password: Some("v943hb1fn245".to_owned()),
+        bypass:None,
+    };
+
     let playwright = Playwright::initialize().await?;
     playwright.prepare()?; // Install browsers
     let chromium = playwright.chromium();
-    let browser = chromium.launcher().headless(false).launch().await?;
+    let browser = chromium.launcher().proxy(proxy).headless(false).launch().await?;
+
+   
+
     let context = browser.context_builder().build().await?;
     let page = context.new_page().await?;
-    page.goto_builder("https://linkedin.com").goto().await?;
+    page.goto_builder("https://google.com").goto().await?;
     
-
+    
+   
+    
     //it appears only if you visit the target url, otherwise cookie won't show
     let cookie = Cookie::with_url("li_at", "value", "https://.www.linkedin.com");
    
