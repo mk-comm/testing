@@ -5,6 +5,7 @@ use std::collections::HashMap;
 use playwright::api::{Cookie, ProxySettings};
 
 
+
 #[tokio::main]
 async fn main() -> Result<(), playwright::Error> {
 
@@ -37,17 +38,25 @@ async fn main() -> Result<(), playwright::Error> {
     
 
     let search_input = page.query_selector("input[name=search]").await?;
-    
-    //let text = search_input.iter();
-    println!("{:?}", search_input);
-    //search_input.unwrap().inner_html();
-    search_input.unwrap().fill_builder("sdfg");
+    thread::sleep(Duration::from_secs(3));
+    //focus on search input and fill it with text
+    match search_input {
+        Some(search_input) => {
+            search_input.focus().await;
+            thread::sleep(Duration::from_secs(1));
+            search_input.fill_builder(", this method only performs the [actionability](https://playwright.dev/docs/actionability/) checks and skips the action. Def").fill().await?;
+        },
+        None => {
+            println!("search_input is None");
+        },
+    }
+
     
     //headers, TODO add variable for User-Agent
     let mut headers = HashMap::new();
     headers.insert("User-Agent".to_string(), "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36".to_string());
     context.set_extra_http_headers(headers).await?;
-
+    
     
 
     thread::sleep(Duration::from_secs(300)); // add delay before closing the browser to check things
