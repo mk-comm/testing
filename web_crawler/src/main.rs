@@ -34,9 +34,7 @@ async fn main() -> Result<(), playwright::Error> {
 
 
     //do some actions
-    //let button_selector = "input[class='gLFyf']"; // replace with the actual selector of the button
-    //let button = page.wait_for_selector_builder(button_selector);
-    //button.click().await?;
+    
 
     let search_input = page.query_selector("input[name=search]").await?;
     
