@@ -26,11 +26,24 @@ async fn main() -> Result<(), playwright::Error> {
     //TODO add variable for the url
     let context = browser.context_builder().build().await?;
     let page = context.new_page().await?;
-    page.goto_builder("https://google.com").goto().await?;
+    page.goto_builder("https://ru.wikipedia.org/wiki/Sefyu").goto().await?;
     
     //it appears only if you visit the target url, otherwise cookie won't show
-    let cookie = Cookie::with_url("li_at", "value", "https://.www.linkedin.com");
+    let cookie = Cookie::with_url("li_at", "value", "https://.www.example.com");
     context.add_cookies(&[cookie]).await?;
+
+
+    //do some actions
+    //let button_selector = "input[class='gLFyf']"; // replace with the actual selector of the button
+    //let button = page.wait_for_selector_builder(button_selector);
+    //button.click().await?;
+
+    let search_input = page.query_selector("input[name=search]").await?;
+    
+    //let text = search_input.iter();
+    println!("{:?}", search_input);
+    //search_input.unwrap().inner_html();
+    search_input.unwrap().fill_builder("sdfg");
     
     //headers, TODO add variable for User-Agent
     let mut headers = HashMap::new();
