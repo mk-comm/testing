@@ -190,7 +190,6 @@ async fn message(page: &Page, message: &str ) -> Result<(), playwright::Error> {
         
     };
 
-
     thread::sleep(Duration::from_secs(1));
     //press button send
     let send = page.query_selector("button[aria-label='Send now']").await?;
