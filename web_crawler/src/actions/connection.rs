@@ -73,6 +73,7 @@ pub async fn connection(entry: Entry) -> Result<(), playwright::Error> {
             println!("search_input is None");
         },
     }
+    
     // go to candidate page
     page.goto_builder(candidate.linkedin.as_str()).goto().await?;
     thread::sleep(Duration::from_secs(15));
