@@ -1,5 +1,4 @@
 use actix_web::{get,web, App, HttpServer, post, HttpResponse};
-use serde::{Deserialize, Serialize};
 
 mod structs;
 mod actions;
@@ -15,8 +14,15 @@ async fn index() -> String{
 #[post("/connect")]
 async fn connect(json: web::Json<Entry>) -> HttpResponse {
     tokio::spawn(async move {
-        connection(json.into_inner());
-        
+        let api = connection(json.into_inner());
+        match api {
+            Ok(_) => println!("Connected!"),
+            Err(error) => {let client = reqwest::Client::new();
+            let _res = client.post("https://webhook.site/79c8d1a4-2f91-49a1-9d59-9a41c4f8b8ec")
+                .body(error.to_string())
+                .send()
+                .await;},
+        }
         
     });
     

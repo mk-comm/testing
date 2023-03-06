@@ -14,24 +14,11 @@ use crate::structs::candidate::Candidate;
 
 #[tokio::main]
 pub async fn connection(entry: Entry) -> Result<(), playwright::Error> {
-    let candidate = Candidate {
-        fullname: "John Doe".to_string(),
-        linkedin: "https://www.linkedin.com/in/johndoe/".to_string(),
-        message: "Hello John, I am a software developer and I am interested in your profile. I would like to know more about your experience and your projects. I am looking forward to hearing from you.".to_string(),
-        };
+    let candidate = Candidate::new(entry.fullname, entry.linkedin, entry.message);
 
-    let proxy = Proxy {
-        ip: "_148.37:6048".to_string(),
-        username: "_bnxd".to_string(),
-        password: "_3hb1fn245".to_string(),
+    let proxy = Proxy::new(entry.ip, entry.username, entry.password);
 
-    };
-
-    let user = User {
-        user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36".to_string(),
-        session_cookie: "_".to_string(),
-        user_id: "unq7x".to_string(),
-    };
+    let user = User::new(entry.user_agent, entry.session_cookie, entry.user_id);
 
     //proxy settings, TODO add variables instead of fixed values
     let proxy = ProxySettings {

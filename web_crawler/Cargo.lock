@@ -1914,6 +1914,7 @@ version = "0.1.0"
 dependencies = [
  "actix-web",
  "playwright",
+ "reqwest",
  "serde",
  "serde_json",
  "tokio",

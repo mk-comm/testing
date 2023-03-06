@@ -11,3 +11,4 @@ playwright = "0.0.20"
 actix-web = "4.3.1"
 serde = { version = "1.0.152", features = ["derive"] }
 serde_json = "1.0.93"
+reqwest = "0.11.14"

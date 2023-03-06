@@ -1,0 +1,14 @@
+c:\Users\mihai\Documents\GitHub\testing\web_crawler\target\debug\deps\zip-f7d63c29cf31f0b9.rmeta: C:\Users\mihai\.cargo\registry\src\github.com-1ecc6299db9ec823\zip-0.5.13\src\lib.rs C:\Users\mihai\.cargo\registry\src\github.com-1ecc6299db9ec823\zip-0.5.13\src\compression.rs C:\Users\mihai\.cargo\registry\src\github.com-1ecc6299db9ec823\zip-0.5.13\src\cp437.rs C:\Users\mihai\.cargo\registry\src\github.com-1ecc6299db9ec823\zip-0.5.13\src\crc32.rs C:\Users\mihai\.cargo\registry\src\github.com-1ecc6299db9ec823\zip-0.5.13\src\read.rs C:\Users\mihai\.cargo\registry\src\github.com-1ecc6299db9ec823\zip-0.5.13\src\result.rs C:\Users\mihai\.cargo\registry\src\github.com-1ecc6299db9ec823\zip-0.5.13\src\spec.rs C:\Users\mihai\.cargo\registry\src\github.com-1ecc6299db9ec823\zip-0.5.13\src\types.rs C:\Users\mihai\.cargo\registry\src\github.com-1ecc6299db9ec823\zip-0.5.13\src\write.rs C:\Users\mihai\.cargo\registry\src\github.com-1ecc6299db9ec823\zip-0.5.13\src\zipcrypto.rs
+
+c:\Users\mihai\Documents\GitHub\testing\web_crawler\target\debug\deps\zip-f7d63c29cf31f0b9.d: C:\Users\mihai\.cargo\registry\src\github.com-1ecc6299db9ec823\zip-0.5.13\src\lib.rs C:\Users\mihai\.cargo\registry\src\github.com-1ecc6299db9ec823\zip-0.5.13\src\compression.rs C:\Users\mihai\.cargo\registry\src\github.com-1ecc6299db9ec823\zip-0.5.13\src\cp437.rs C:\Users\mihai\.cargo\registry\src\github.com-1ecc6299db9ec823\zip-0.5.13\src\crc32.rs C:\Users\mihai\.cargo\registry\src\github.com-1ecc6299db9ec823\zip-0.5.13\src\read.rs C:\Users\mihai\.cargo\registry\src\github.com-1ecc6299db9ec823\zip-0.5.13\src\result.rs C:\Users\mihai\.cargo\registry\src\github.com-1ecc6299db9ec823\zip-0.5.13\src\spec.rs C:\Users\mihai\.cargo\registry\src\github.com-1ecc6299db9ec823\zip-0.5.13\src\types.rs C:\Users\mihai\.cargo\registry\src\github.com-1ecc6299db9ec823\zip-0.5.13\src\write.rs C:\Users\mihai\.cargo\registry\src\github.com-1ecc6299db9ec823\zip-0.5.13\src\zipcrypto.rs
+
+C:\Users\mihai\.cargo\registry\src\github.com-1ecc6299db9ec823\zip-0.5.13\src\lib.rs:
+C:\Users\mihai\.cargo\registry\src\github.com-1ecc6299db9ec823\zip-0.5.13\src\compression.rs:
+C:\Users\mihai\.cargo\registry\src\github.com-1ecc6299db9ec823\zip-0.5.13\src\cp437.rs:
+C:\Users\mihai\.cargo\registry\src\github.com-1ecc6299db9ec823\zip-0.5.13\src\crc32.rs:
+C:\Users\mihai\.cargo\registry\src\github.com-1ecc6299db9ec823\zip-0.5.13\src\read.rs:
+C:\Users\mihai\.cargo\registry\src\github.com-1ecc6299db9ec823\zip-0.5.13\src\result.rs:
+C:\Users\mihai\.cargo\registry\src\github.com-1ecc6299db9ec823\zip-0.5.13\src\spec.rs:
+C:\Users\mihai\.cargo\registry\src\github.com-1ecc6299db9ec823\zip-0.5.13\src\types.rs:
+C:\Users\mihai\.cargo\registry\src\github.com-1ecc6299db9ec823\zip-0.5.13\src\write.rs:
+C:\Users\mihai\.cargo\registry\src\github.com-1ecc6299db9ec823\zip-0.5.13\src\zipcrypto.rs:
