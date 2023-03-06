@@ -15,7 +15,7 @@ async fn index() -> String{
 async fn connect(json: web::Json<Entry>) -> HttpResponse {
     tokio::spawn(async move {
         let api = connection(json.into_inner());
-        match api {
+        match api.await {
             Ok(_) => println!("Connected!"),
             Err(error) => {let client = reqwest::Client::new();
             let _res = client.post("https://webhook.site/79c8d1a4-2f91-49a1-9d59-9a41c4f8b8ec")

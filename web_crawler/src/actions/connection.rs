@@ -12,7 +12,7 @@ use crate::structs::proxy::Proxy;
 use crate::structs::candidate::Candidate;
 
 
-#[tokio::main]
+
 pub async fn connection(entry: Entry) -> Result<(), playwright::Error> {
     let candidate = Candidate::new(entry.fullname, entry.linkedin, entry.message);
 
@@ -80,18 +80,17 @@ pub async fn connection(entry: Entry) -> Result<(), playwright::Error> {
     let connect_button = find_button(&page).await;
     match connect_button {
         Ok(_) => message(&page, candidate.message.as_str()).await?,
-        Err(_) => println!("Connect button not found"),
+        Err(_) => {
+            thread::sleep(Duration::from_secs(3));
+            browser.close().await?;
+            return Err(playwright::Error::ObjectNotFound)},
     }
-    thread::sleep(Duration::from_secs(3));
+    
     
 
-    thread::sleep(Duration::from_secs(300)); // add delay before closing the browser to check things
+    thread::sleep(Duration::from_secs(14)); // add delay before closing the browser to check things
 
-    // What this code is doing? looks like it compares current page with example?
-    // Exec in browser and Deserialize with serde 
-    let s: String = page.eval("() => location.href").await?;
-    assert_eq!(s, "https://example.com/");
-    page.click_builder("a").click().await?;
+    browser.close().await?;
     Ok(())
 }
 
