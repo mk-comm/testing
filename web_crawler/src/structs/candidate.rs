@@ -1,7 +1,7 @@
 pub struct Candidate {
-    fullname: String,
-    linkedin: String,
-    message: String,
+    pub fullname: String,
+    pub linkedin: String,
+    pub message: String,
 }
 
 impl Candidate {
